@@ -16,8 +16,11 @@ public interface EmployeeService {
     Employee login(EmployeeLoginDTO employeeLoginDTO);
 
 
-//    新增员工
-//    @param EmployeeDTO
+    /**
+     * 新增员工
+     *  @param employeeDTO
+     * @return
+     */
     void save(EmployeeDTO employeeDTO);
 
 
@@ -27,4 +30,13 @@ public interface EmployeeService {
      * @return
      */
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+
+
+    /**
+     * 启用禁用账号
+     * @param status
+     * @return id
+     */
+    void startOrStop(Integer status, Long id);
 }
