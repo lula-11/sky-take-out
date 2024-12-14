@@ -35,7 +35,7 @@ public class EmployeeController {
     private JwtProperties jwtProperties;
 
 
-    /** 
+    /**
      * 登录
      *
      * @param employeeLoginDTO
@@ -81,11 +81,10 @@ public class EmployeeController {
 
     /**
      * 新增员工
-     *
      */
     @PostMapping
     @ApiOperation("add employee")
-    public Result save (@RequestBody EmployeeDTO employeeDTO){
+    public Result save(@RequestBody EmployeeDTO employeeDTO) {
 //        System.out.println("thread id:" + Thread.currentThread().getId());
         log.info("新增员工：{}", employeeDTO);
         employeeService.save(employeeDTO);
@@ -93,14 +92,12 @@ public class EmployeeController {
     }
 
 
-
     /**
      * 分页查询
-     *
      */
     @GetMapping("/page")
     @ApiOperation("Page Query")
-    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
         log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
@@ -109,11 +106,10 @@ public class EmployeeController {
 
     /**
      * 启用禁用员工账号
-     *
      */
     @PostMapping("/status/{status}")
     @ApiOperation("startOrStop account")
-    public Result satrtOrStop(@PathVariable Integer status, Long id){
+    public Result satrtOrStop(@PathVariable Integer status, Long id) {
         log.info("启用禁用员工账号：{},{}", status, id);
         employeeService.startOrStop(status, id);
         return Result.success();
@@ -121,22 +117,20 @@ public class EmployeeController {
 
     /**
      * 根据id查询员工信息
-     *
      */
     @GetMapping("/{id}")
     @ApiOperation("根据id查询员工信息")
-    public Result<Employee> getById(@PathVariable Long id){
+    public Result<Employee> getById(@PathVariable Long id) {
         Employee employee = employeeService.getById(id);
         return Result.success(employee);
     }
 
     /**
      * 修改员工信息
-     *
      */
     @PutMapping
     @ApiOperation("修改员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO){
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
         log.info("编辑员工信息: {}", employeeDTO);
         employeeService.update(employeeDTO);
         return Result.success();
