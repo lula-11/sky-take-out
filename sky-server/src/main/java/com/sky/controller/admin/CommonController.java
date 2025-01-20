@@ -36,6 +36,7 @@ public class CommonController {
 
             return Result.success(filepath);
         }
+
         catch (IOException e) {
             log.error("文件上传失败：{}", e);
         }
